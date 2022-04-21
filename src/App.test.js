@@ -1,13 +1,20 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import App from './App'
 
-test('renders learn react link', () => {
-  render(<App />) // App component를 virtual DOM에 생성
-  // screen을 통해 Virtual Dom 탐색
-  // const linkElement = screen.getByText(/learn react testing library/i) // regualr expression
-  const linkElement = screen.getByRole('link', {
-    name: /learn react testing library/i,
-  })
-  // assertion - matcher
-  expect(linkElement).toBeInTheDocument()
+test('button has correct initial color(tomato)', () => {
+  render(<App />)
+  // find an element with a role of button and text of 'Change to blue'
+  const colorButton = screen.getByRole('button', { name: /change to blue/i })
+
+  // expect the background color to be tomato
+  expect(colorButton).toHaveStyle({ backgroundColor: 'tomato' })
+
+  // click button
+  fireEvent.click(colorButton)
+
+  // expect the background color to be blue
+  expect(colorButton).toHaveStyle({ backgroundColor: 'blue' })
+
+  // expect the button text to be 'Change to tomato'
+  expect(colorButton).toHaveTextContent(/change to tomato/i)
 })

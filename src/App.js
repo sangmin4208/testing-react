@@ -1,23 +1,26 @@
-import logo from './logo.svg'
+import { useMemo, useState } from 'react'
 import './App.css'
 
+const [first, second] = ['tomato', 'blue']
+
 function App() {
+  const [buttonColor, setButtonColor] = useState(first)
+  const text = useMemo(
+    () =>
+      buttonColor === first ? `Change to ${second}` : `Change to ${first}`,
+    [buttonColor]
+  )
+  const toggleButtonColor = () => {
+    setButtonColor((prev) => (prev === first ? second : first))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Testing Library
-        </a>
-      </header>
+    <div>
+      <button
+        onClick={toggleButtonColor}
+        style={{ backgroundColor: buttonColor }}
+      >
+        {text}
+      </button>
     </div>
   )
 }
