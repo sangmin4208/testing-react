@@ -3,6 +3,10 @@ import './App.css'
 
 const [first, second] = ['tomato', 'pink']
 
+export function replaceCamelWithSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, ' $1')
+}
+
 function App() {
   const [buttonColor, setButtonColor] = useState(first)
   const [disabled, setDisabled] = useState(false)
