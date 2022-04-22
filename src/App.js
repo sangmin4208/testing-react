@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import './App.css'
 
-const [first, second] = ['tomato', 'pink']
+const [first, second] = ['MediumVioletRed', 'MidnightBlue']
 
 export function replaceCamelWithSpaces(colorName) {
   return colorName.replace(/\B([A-Z])\B/g, ' $1')
