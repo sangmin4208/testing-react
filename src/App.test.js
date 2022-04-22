@@ -9,5 +9,5 @@ test('renders learn react link', () => {
     name: /learn react testing library/i,
   })
   // assertion - matcher
-  expect(linkElement).toBeInTheDocument()
+  expect(linkElement).toBeDisabled()
 })
